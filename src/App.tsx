@@ -3,6 +3,7 @@ import './App.css';
 
 const App = () => {
   // This function will be triggered when the "container" is clicked
+  // 「コンテナ」がクリックされたときにトリガーされます
   const divClickedHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     const div = event.currentTarget;
 
@@ -12,11 +13,16 @@ const App = () => {
       'Width: ',
       div.clientWidth,
       'Height: ',
-      div.clientHeight
+      div.clientHeight,
+      'Offset: Top',
+      div.offsetTop,
+      'Offset: Left',
+      div.offsetLeft
     );
   };
 
   // This function will be triggered when the headline is clicked
+  // 見出しがクリックされたときにトリガーされます
   const headingClickedHandler = (event: React.MouseEvent<HTMLHeadingElement>) => {
     event.stopPropagation();
 
@@ -27,11 +33,16 @@ const App = () => {
       'Width: ',
       heading.clientWidth,
       'Height: ',
-      heading.clientHeight
+      heading.clientHeight,
+      'Offset: Top: ',
+      heading.offsetTop,
+      'Offset: Left: ',
+      heading.offsetLeft
     );
   };
 
   // This function will be triggered when the image is clicked
+  // 画像がクリックされたときにトリガーされます
   const imgClickedHandler = (event: React.MouseEvent<HTMLImageElement>) => {
     event.stopPropagation();
 
@@ -42,7 +53,11 @@ const App = () => {
       'Width: ',
       img.clientWidth,
       'Height: ',
-      img.clientHeight
+      img.clientHeight,
+      'Offset Top: ',
+      img.offsetTop,
+      'Offset Left: ',
+      img.offsetLeft
     );
   };
 
