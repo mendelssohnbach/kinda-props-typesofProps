@@ -1,55 +1,62 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 
-const App = (): JSX.Element => {
-  const [clickedButton, setClickedButton] = useState('');
+const App = () => {
+  // This function will be triggered when the "container" is clicked
+  const divClickedHandler = (event: React.MouseEvent<HTMLDivElement>) => {
+    const div = event.currentTarget;
 
-  const buttonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
+    console.log(
+      'Element name: ',
+      div.tagName,
+      'Width: ',
+      div.clientWidth,
+      'Height: ',
+      div.clientHeight
+    );
+  };
 
-    const button: HTMLButtonElement = event.currentTarget.setClickedButton(button.name);
+  // This function will be triggered when the headline is clicked
+  const headingClickedHandler = (event: React.MouseEvent<HTMLHeadingElement>) => {
+    event.stopPropagation();
+
+    const heading = event.currentTarget;
+    console.log(
+      'Element name: ',
+      heading.tagName,
+      'Width: ',
+      heading.clientWidth,
+      'Height: ',
+      heading.clientHeight
+    );
+  };
+
+  // This function will be triggered when the image is clicked
+  const imgClickedHandler = (event: React.MouseEvent<HTMLImageElement>) => {
+    event.stopPropagation();
+
+    const img = event.currentTarget;
+    console.log(
+      'Element name: ',
+      img.tagName,
+      'Width: ',
+      img.clientWidth,
+      'Height: ',
+      img.clientHeight
+    );
   };
 
   return (
-    <div className="container">
-      <h3>Kindacode.com</h3>
-      <form>
-        <button
-          onClick={buttonHandler}
-          className="button"
-          name="button 1"
-        >
-          Button 1
-        </button>
-
-        <button
-          onClick={buttonHandler}
-          className="button"
-          name="button 2"
-        >
-          Button 2
-        </button>
-
-        <button
-          onClick={buttonHandler}
-          className="button"
-          name="button 3"
-        >
-          Button 3
-        </button>
-
-        <button
-          onClick={buttonHandler}
-          className="button"
-          name="button 4"
-        >
-          Button 4
-        </button>
-      </form>
-
-      <h1>
-        {clickedButton !== '' ? `You have clicked ${clickedButton}` : `No button clicked yet`}
-      </h1>
+    <div
+      className="container"
+      onClick={divClickedHandler}
+    >
+      <h1 onClick={headingClickedHandler}>Kindacode.com</h1>
+      <img
+        src="https://www.kindacode.com/wp-content/uploads/2021/08/cat.jpeg"
+        alt="Kindacode.com"
+        onClick={imgClickedHandler}
+      />
     </div>
   );
 };
